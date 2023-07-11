@@ -1,0 +1,389 @@
+{% extends 'app/empty.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Start::app-content -->
+    <div class="main-content app-content">
+        <div class="container-fluid">
+            <!-- Page Header -->
+            <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
+                <h1 class="page-title fw-semibold fs-18 mb-0">Tambah Produk</h1>
+            </div>
+            <!-- Page Header Close -->
+            <!-- Start::row-1 -->
+
+            <!--End::row-1 -->
+            <!-- Start::row-2 Informasi Produk-->
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card custom-card">
+                        <div class="card-header">
+                            <div class="card-title">Informasi Produk</div>
+                        </div>
+                        <div class="card-body add products p-0">
+                            <div class="p-4">
+                                <div class="row gx-5">
+                                    <div class="col-xxl-8 col-xl-12 col-lg-12 col-md-6">
+                                        <div class="card custom-card shadow-none mb-0 border-0">
+                                            <div class="card-body p-0">
+                                                <div class="row gy-3">
+                                                    <div class="col-xl-12">
+                                                        <div class="col-xl-12 product-documents-container">
+                                                            <p class="fw-semibold mb-2 fs-14 required-label">Foto Produk
+                                                                :</p>
+                                                            <div class="d-flex justify-content-between">
+                                                                <input type="file" class="gambar1" name="filepond"
+                                                                       accept="image/png, image/jpeg, image/gif"/>
+                                                                <input type="file" class="gambar2" name="filepond"
+                                                                       accept="image/png, image/jpeg, image/gif"/>
+                                                                <input type="file" class="gambar3" name="filepond"
+                                                                       accept="image/png, image/jpeg, image/gif"/>
+                                                            </div>
+                                                        </div>
+                                                        <label class="form-label op-5 mt-3">Minimum 0f 6 images are need
+                                                            to be uploaded,make sure the image size match the proper
+                                                            background size and all images should be uniformly
+                                                            maintained with width and height to the image
+                                                            container,image size should not exceed 2MB,once uploaded to
+                                                            change the image you need to wait minimum of 24hrs. </label>
+                                                    </div>
+                                                    <div class="col-xl-12">
+                                                        <label for="product-name-add" class="form-label required-label">Nama
+                                                            Produk</label>
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" id="myInput" class="form-control"
+                                                                   maxlength="500" placeholder="Mohon masukan"
+                                                                   aria-label="Recipient's username"
+                                                                   aria-describedby="basic-addon2">
+                                                            <span class="input-group-text" id="characterCount"></span>
+                                                        </div>
+                                                        <label for="product-name-add"
+                                                               class="form-label mt-1 fs-12 op-5 text-muted mb-0">*Product
+                                                            Name should not exceed 30 characters</label>
+                                                    </div>
+                                                    <div class="col-xl-12">
+                                                        <label for="product-category-add"
+                                                               class="form-label required-label">Kategori</label>
+                                                        <select class="form-control" data-trigger
+                                                                name="product-category-add" id="product-category-add">
+                                                            <option value="">Pilih kategori</option>
+                                                            <option value="Clothing">Clothing</option>
+                                                            <option value="Footwear">Footwear</option>
+                                                            <option value="Accesories">Accesories</option>
+                                                            <option value="Grooming">Grooming</option>
+                                                            <option value="Ethnic & Festive">Ethnic & Festive</option>
+                                                            <option value="Jewellery">Jewellery</option>
+                                                            <option value="Toys & Babycare">Toys & Babycare</option>
+                                                            <option value="Festive Gifts">Festive Gifts</option>
+                                                            <option value="Kitchen">Kitchen</option>
+                                                            <option value="Dining">Dining</option>
+                                                            <option value="Home Decors">Home Decors</option>
+                                                            <option value="Stationery">Stationery</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-xl-12">
+                                                        <label class="form-label required-label">Deskripsi
+                                                            Produk</label>
+                                                        <div id="product-features"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End::row-2 -->
+            <!-- Start::row-3 Infomasi Penjualan-->
+            <div class="row">
+                <div class="row-xl-12">
+                    <div class="card custom-card">
+                        <div class="card-header">
+                            <div class="card-title">Informasi Penjualan</div>
+                        </div>
+                        <div class="card-body add product p-0">
+                            <div class="p-4">
+                                <div id="variation-table" class="row gx-5">
+                                    <label for="product-name-add" class="form-label ">Variasi</label>
+                                    <div class="button-container">
+                                        <button id="toggle-variation"
+                                                class="form-label border border-container border-5">
+                                            <span class="plus-sign">+</span>
+                                            Aktifkan Variasi
+                                        </button>
+                                    </div>
+                                    <div class="col-xl-6 mt-3">
+                                        <label for="product-category-add" class="form-label required-label">Harga
+                                            Modal</label>
+                                        <input type="text" class="form-control" id="product-actual-price"
+                                               placeholder="Harga">
+                                    </div>
+                                    <div class="col-xl-6 mt-3">
+                                        <label for="product-category-add" class="form-label required-label">Harga
+                                            Jual</label>
+                                        <input type="text" class="form-control" id="product-actual-price"
+                                               placeholder="Harga">
+                                    </div>
+                                    <div class="col-xl-6 mt-3">
+                                        <label for="product-category-add" class="form-label required-label">Harga
+                                            Diskon</label>
+                                        <input type="text" class="form-control" id="product-actual-price"
+                                               placeholder="Harga">
+                                    </div>
+                                    <div class="col-xl-6 mt-3">
+                                        <label for="product-gender-add" class="form-label required-label">Stok</label>
+                                        <input type="text" class="form-control" id="product-actual-price" value="0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End::row-3 -->
+            <!-- Start::row-4 Pengiriman-->
+            <div class="row">
+                <div class="row-xl-12">
+                    <div class="card custom-card">
+                        <div class="card-header">
+                            <div class="card-title">Pengiriman</div>
+                        </div>
+                        <div class="card-body add product p-0">
+                            <div class="p-4">
+                                <div class="row gx-5">
+                                    <div class="col-xl-12">
+                                        <label for="product-category-add"
+                                               class="form-label required-label">Supplier</label>
+                                        <select class="form-control" data-trigger name="product-category-add"
+                                                id="product-category-add">
+                                            <option value="">Pilih supplier</option>
+                                            <option value="Clothing">OKE LAKU</option>
+                                            <option value="Footwear">THE MOJOKERTO</option>
+                                            <option value="Accesories">LUCKY SIX</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xl-12 mt-3">
+                                        <label for="product-category-add" class="form-label">Link Produk</label>
+                                        <input type="text" class="form-control" id="product-actual-price"
+                                               placeholder="Link">
+                                    </div>
+                                    <div class="col-xl-6 mt-3">
+                                        <label for="product-category-add"
+                                               class="form-label required-label">Berat</label>
+                                        <div class="input-group">
+                                            <input type="number" id="berat" class="form-control"
+                                                   placeholder="Mohon masukan"
+                                                   aria-label="Mohon masukan" aria-describedby="basic-addon2">
+                                            <span class="input-group-text" id="basic-addon2">Gram</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 mt-3">
+                                        <label for="product-gender-add" class="form-label required-label">Ukuran
+                                            Paket</label>
+                                        <div class="row gy-4">
+                                            <div class="col">
+                                                <div class="input-group">
+                                                    <input type="number" id="lebar" class="form-control"
+                                                           placeholder="Lebar"
+                                                           aria-label="Mohon masukan" aria-describedby="basic-addon2">
+                                                    <span class="input-group-text" id="basic-addon2">cm</span>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="input-group">
+                                                    <input type="number" id="lebar" class="form-control"
+                                                           placeholder="Panjang"
+                                                           aria-label="Mohon masukan" aria-describedby="basic-addon2">
+                                                    <span class="input-group-text" id="basic-addon2">cm</span>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="input-group">
+                                                    <input type="number" id="lebar" class="form-control"
+                                                           placeholder="Tinggi"
+                                                           aria-label="Mohon masukan" aria-describedby="basic-addon2">
+                                                    <span class="input-group-text" id="basic-addon2">cm</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End::row-4 -->
+            <!-- Start::row-5 Lainnya-->
+            <div class="row">
+                <div class="row-xl-12 mb-1">
+                    <div class="card custom-card">
+                        <div class="card-header">
+                            <div class="card-title">Lainnya</div>
+                        </div>
+                        <div class="card-body add product p-0">
+                            <div class="p-4">
+                                <div class="row gx-5">
+                                    <div class="col-xl-12">
+                                        <label for="product-category-add"
+                                               class="form-label">SKU Induk</label>
+                                        <div class="col-xl-6">
+                                            <input type="text" class="form-control" id="product-actual-price"
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-4 py-3 border-top border-block-start-dashed d-sm-flex justify-content-end">
+                    <button class="btn btn-primary-light m-1">Simpan & Tampilkan<i
+                            class="bi bi-plus-lg ms-2"></i>
+                    </button>
+                    <button class="btn btn-success-light m-1">Simpan & Arsipkan<i
+                            class="bi bi-download ms-2"></i></button>
+                </div>
+            </div>
+            <!--End::row-5 -->
+            <!-- Start::row-6 Aktif Variasi-->
+            <div class="row">
+                <div class="row-xl-12 mb-1">
+                    <div class="card custom-card">
+                        <div class="card-header">
+                            <div class="card-title">Informasi Penjualan</div>
+                        </div>
+                        <div class="card-body add product p-0">
+                            <div class="p-4">
+                                <div class="row gx-5">
+                                    <div class="col-xl-12">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <span class="fw-bold">Variasi</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-4 callout">
+                                                <div class="row">
+                                                    <div class="col-xl-12">
+                                                        <label for="product-category-add" class="form-label">Variasi
+                                                            1</label>
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control"
+                                                                   id="product-actual-price"
+                                                                   style="margin-right: 10px; margin-bottom: 10px;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div id="pilihan-variasi-container" class="col-xl-12">
+                                                        <label for="product-category-add"
+                                                               class="form-label">Pilihan</label>
+                                                        <div class="row mb-2" id="form-pilihan-variasi-1">
+                                                            <div class="input-group pilihan-variasi mb-2">
+                                                                <input type="text"
+                                                                       class="form-control form-pilihan-variasi"
+                                                                       id="pilihan"
+                                                                       style="margin-right: 10px;">
+                                                                <div class="input-group-append">
+                                                                    <button class="btn btn-outline-danger delete-button disabled"
+                                                                            type="button">
+                                                                        <i class="bx bx-trash"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End::row-6 -->
+        </div>
+    </div>
+    <!-- End::app-content -->
+{% endblock %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'assets/libs/quill/quill.snow.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/libs/quill/quill.bubble.css' %}">
+    <!-- Filepond CSS -->
+    <link rel="stylesheet" href="{% static 'assets/libs/filepond/filepond.min.css' %}">
+    <link rel="stylesheet"
+          href="{% static 'assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css' %}">
+    <link rel="stylesheet"
+          href="{% static 'assets/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.min.css' %}">
+    <!-- Date & Time Picker CSS -->
+    <link rel="stylesheet" href="{% static 'assets/libs/flatpickr/flatpickr.min.css' %}">
+    <style>
+        .required-label::before {
+            content: "*";
+            color: red;
+            margin-right: 5px;
+        }
+
+        .plus-sign {
+            margin-right: 5px;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+        }
+
+        .button-container {
+            margin-left: auto;
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+{% endblock %}
+
+{% block additional_js %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+            integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Date & Time Picker JS -->
+    <script src="{% static 'assets/libs/flatpickr/flatpickr.min.js' %} "></script>
+    <!-- Quill Editor JS -->
+    <script src="{% static 'assets/libs/quill/quill.min.js' %}"></script>
+    <!-- Filepond JS -->
+    <script src="{% static 'assets/libs/filepond/filepond.min.js' %}"></script>
+    <script src="{% static 'assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js' %}"></script>
+    <script src="{% static 'assets/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js' %}"></script>
+    <script src="{% static 'assets/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js' %}"></script>
+    <script src="{% static 'assets/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js' %}"></script>
+    <script src="{% static 'assets/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.min.js' %}"></script>
+    <script src="{% static 'assets/libs/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js' %}"></script>
+    <script src="{% static 'assets/libs/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js' %}"></script>
+    <script src="{% static 'assets/libs/filepond-plugin-image-crop/filepond-plugin-image-crop.min.js' %}"></script>
+    <script src="{% static 'assets/libs/filepond-plugin-image-resize/filepond-plugin-image-resize.min.js' %}"></script>
+    <script src="{% static 'assets/libs/filepond-plugin-image-transform/filepond-plugin-image-transform.min.js' %}"></script>
+    <!-- Internal Add Products JS -->
+    <script src="{% static 'assets/js/add-products.js' %}"></script>
+    <script src="{% static 'assets/js/add-products-custom.js' %}"></script>
+
+    <script>
+
+    </script>
+
+{% endblock %}

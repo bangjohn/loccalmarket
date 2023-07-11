@@ -1,0 +1,165 @@
+{% load static %}
+{% block sidebar %}
+    <!-- Start::app-sidebar -->
+    <aside class="app-sidebar sticky" id="sidebar">
+        <!-- Start::main-sidebar-header -->
+        <div class="main-sidebar-header">
+            <a href="index.html" class="header-logo">
+                <img src="{% static 'assets/images/brand-logos/desktop-logo.png' %}" alt="logo" class="desktop-logo">
+                <img src="{% static 'assets/images/brand-logos/toggle-logo.png' %}" alt="logo" class="toggle-logo">
+                <img src="{% static 'assets/images/brand-logos/desktop-dark.png' %}" alt="logo" class="desktop-dark">
+                <img src="{% static 'assets/images/brand-logos/toggle-dark.png' %}" alt="logo" class="toggle-dark">
+            </a>
+        </div>
+        <!-- End::main-sidebar-header -->
+        <!-- Start::main-sidebar -->
+        <div class="main-sidebar" id="sidebar-scroll">
+            <!-- Start::Emptynav -->
+            <nav class="main-menu-container nav nav-pills flex-column sub-open">
+                <div class="slide-left" id="slide-left">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
+                    </svg>
+                </div>
+                <ul class="main-menu">
+                    <!-- Start::slide__category -->
+                    <li class="slide__category"><span class="category-name">Selamat datang, admin</span></li>
+                    <!-- End::slide__category -->
+                    <!-- Start::slide -->
+                    <li class="slide">
+                        <a href="{% url 'dashboard' %}"
+                           class="side-menu__item {% if sidebar_active == 'dashboard' %}active{% endif %}">
+                            <i class="bx bxs-home side-menu__icon"></i>
+                            <span class="side-menu__label">Beranda</span>
+                        </a>
+                    </li>
+                    <!-- End::slide -->
+                    <!-- Start::slide -->
+                    <li class="slide has-sub {% if sidebar_active == 'product_list' %}active open{% endif %}">
+                        <a href="javascript:void(0);"
+                           class="side-menu__item {% if sidebar_active == 'product_list' %}active{% endif %}">
+                            <i class="bx bxs-package side-menu__icon"></i>
+                            <span class="side-menu__label">Daftar Produk</span>
+                            <i class="fe fe-chevron-right side-menu__angle"></i>
+                        </a>
+                        <ul class="slide-menu child1">
+                            <li class="slide side-menu__label1">
+                                <a href="javascript:void(0)">Daftar Produk</a>
+                            </li>
+                            <li class="slide {% if submenu_active == 'list' %}active{% endif %}">
+                                <a href="/product-list"
+                                   class="side-menu__item {% if submenu_active == 'list' %}active{% endif %}">List
+                                    Produk</a>
+                            </li>
+                            <li id="tambah-produk-submenu" class="slide">
+                                <a href="/add-product" class="side-menu__item">Tambah Produk</a>
+                            </li>
+                            <li class="slide">
+                                <a href="index.html" class="side-menu__item">Kategori</a>
+                            </li>
+                            <li class="slide">
+                                <a href="index.html" class="side-menu__item">Supplier</a>
+                            </li>
+                            <li class="slide">
+                                <a href="index.html" class="side-menu__item">Ekspedisi</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- End::slide -->
+                    <!-- Start::slide -->
+                    <li class="slide">
+                        <a href="icons.html" class="side-menu__item">
+                            <i class="bx bx-list-ul side-menu__icon"></i>
+                            <span class="side-menu__label">Pemesanan<span
+                                    class="badge bg-success-transparent ms-2">3</span><span
+                                    class="badge bg-warning-transparent ms-2">12</span></span></span>
+                        </a>
+                    </li>
+                    <!-- End::slide -->
+                    <!-- Start::slide -->
+                    <li class="slide has-sub">
+                        <a href="javascript:void(0);" class="side-menu__item">
+                            <i class="bx bxs-user-rectangle side-menu__icon"></i>
+                            <span class="side-menu__label">Member</span>
+                            <i class="fe fe-chevron-right side-menu__angle"></i>
+                        </a>
+                        <ul class="slide-menu child1">
+                            <li class="slide side-menu__label1">
+                                <a href="javascript:void(0)">Member</a>
+                            </li>
+                            <li class="slide">
+                                <a href="index.html" class="side-menu__item">List</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- End::slide -->
+                    <!-- Start::slide -->
+                    <li class="slide">
+                        <a href="icons.html" class="side-menu__item">
+                            <i class="bx bx-chart side-menu__icon"></i>
+                            <span class="side-menu__label">Laporan</span>
+                        </a>
+                    </li>
+                    <!-- End::slide -->
+                    <!-- Start::slide -->
+                    <li class="slide has-sub">
+                        <a href="javascript:void(0);" class="side-menu__item">
+                            <i class="bx bx-cog side-menu__icon"></i>
+                            <span class="side-menu__label">Pengaturan</span>
+                            <i class="fe fe-chevron-right side-menu__angle"></i>
+                        </a>
+                        <ul class="slide-menu child1">
+                            <li class="slide side-menu__label1">
+                                <a href="javascript:void(0)">Pengaturan</a>
+                            </li>
+                            <li class="slide">
+                                <a href="401-error.html" class="side-menu__item">Umum</a>
+                            </li>
+                            <li class="slide">
+                                <a href="404-error.html" class="side-menu__item">Rates</a>
+                            </li>
+                            <li class="slide has-sub">
+                                <a href="javascript:void(0);" class="side-menu__item">Keamanan
+                                    <i class="fe fe-chevron-right side-menu__angle"></i></a>
+                                <ul class="slide-menu child2">
+                                    <li class="slide">
+                                        <a href="javascript:void(0);" class="side-menu__item">Ganti Password</a>
+                                    </li>
+                                    <li class="slide">
+                                        <a href="javascript:void(0);" class="side-menu__item">Peran</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- End::slide -->
+                    <!-- Start::slide -->
+                    <li class="slide has-sub">
+                        <a href="javascript:void(0);" class="side-menu__item">
+                            <i class="bx bx-help-circle side-menu__icon"></i>
+                            <span class="side-menu__label">Bantuan</span>
+                            <i class="fe fe-chevron-right side-menu__angle"></i>
+                        </a>
+                        <ul class="slide-menu child1 mega-menu">
+                            <li class="slide side-menu__label1">
+                                <a href="javascript:void(0)">Bantuan</a>
+                            </li>
+                            <li class="slide">
+                                <a href="alerts.html" class="side-menu__item">Tutorial</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- End::slide -->
+                </ul>
+                <div class="slide-right" id="slide-right">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
+                    </svg>
+                </div>
+            </nav>
+            <!-- End::nav -->
+        </div>
+        <!-- End::main-sidebar -->
+    </aside>
+    <!-- End::app-sidebar -->
+{% endblock %}

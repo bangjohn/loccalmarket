@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% load tz %}
+
+<p>Waktu saat ini: <span id="waktu"></span></p>
+
+<script>
+  function perbaruiWaktu() {
+    var waktuElement = document.getElementById("waktu");
+    var waktuSekarang = new Date().toLocaleTimeString('id-ID', {hour: '2-digit', minute:'2-digit', second: '2-digit'});
+    waktuElement.innerHTML = waktuSekarang;
+  }
+
+  setInterval(perbaruiWaktu, 1000);
+</script>
+
+
+</body>
+</html>
